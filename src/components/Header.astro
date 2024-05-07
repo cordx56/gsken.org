@@ -3,10 +3,11 @@ import { siteTitle } from "@/consts";
 ---
 
 <header class="mb-4">
-  <div class="container flex justify-between p-2">
-    <h1 class="text-3xl">{siteTitle}</h1>
-    <nav class="text-xl flex items-center">
-      <ul class="flex">
+  <div class="container relative flex justify-between items-center p-2">
+    <h1 class="text-3xl"><a href="/">{siteTitle}</a></h1>
+    <nav id="nav">
+      <div id="nav-toggle" class="flex sm:hidden items-center">menu</div>
+      <ul>
         <li>告知</li>
         <li>出版物</li>
         <li>ブログ</li>
@@ -14,8 +15,27 @@ import { siteTitle } from "@/consts";
     </nav>
   </div>
 </header>
+<script>
+  const navToggle = document.getElementById("nav-toggle");
+  navToggle?.addEventListener("click", () => {
+    const nav = document.getElementById("nav");
+    nav?.classList.toggle("open");
+  });
+</script>
 <style>
-  li {
-    @apply mx-3;
+  #nav ul {
+    @apply absolute right-0 top-full hidden bg items-center justify-end sm:justify-normal border-l border-b border-zinc-300 text-xl;
+  }
+  #nav.open ul {
+    @apply flex flex-col;
+  }
+  @media screen(sm) {
+    #nav ul,
+    #nav.open ul {
+      @apply static right-auto top-auto flex flex-row border-0 bg-transparent;
+    }
+  }
+  #nav li {
+    @apply mx-3 p-2;
   }
 </style>

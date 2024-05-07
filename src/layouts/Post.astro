@@ -1,0 +1,14 @@
+---
+import Layout from "@/layouts/Layout.astro";
+const { frontmatter } = Astro.props;
+import { showDate } from "@/utils";
+const date = frontmatter.date ? showDate(frontmatter.date) : frontmatter.date;
+---
+
+<Layout>
+  <article>
+    <h1 class="text-2xl">{frontmatter.title}</h1>
+    {date ? <p>{date}</p> : ""}
+    <slot />
+  </article>
+</Layout>

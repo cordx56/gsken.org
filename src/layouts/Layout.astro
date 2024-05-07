@@ -39,9 +39,18 @@ const { pageTitle } = Astro.props;
 
 <style is:global>
   :root {
-    @apply bg-zinc-100 text-zinc-900 dark:bg-zinc-900 dark:text-zinc-200;
+    @apply text bg;
   }
   .container {
-    @apply max-w-screen-md mx-auto;
+    @apply w-full max-w-screen-md mx-auto px-3;
+  }
+  main a {
+    @apply text-rose-500;
+  }
+  main h1 {
+    @apply m-2 text-2xl;
+  }
+  main h2 {
+    @apply m-2 text-xl;
   }
 </style>

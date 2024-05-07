@@ -4,5 +4,11 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    ({ addComponents }) =>
+      addComponents({
+        ".bg": { "@apply bg-zinc-100 dark:bg-zinc-900": {} },
+        ".text": { "@apply text-zinc-900 dark:text-zinc-200": {} },
+      }),
+  ],
 };
