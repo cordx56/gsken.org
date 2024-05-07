@@ -1,0 +1,29 @@
+---
+import { type MarkdownInstance } from "astro";
+type Props = {
+  posts: MarkdownInstance<any>[];
+  max?: number;
+};
+const { posts, max }: Props = Astro.props;
+import { showDate } from "@/utils";
+---
+
+<ol class="list-disc pl-4">
+  {
+    posts
+      .sort(
+        (a, b) =>
+          (a.frontmatter.date ? new Date(b.frontmatter.date).getTime() : 0) -
+          (b.frontmatter.date ? new Date(a.frontmatter.date).getTime() : 0),
+      )
+      .slice(0, max)
+      .map((v) => (
+        <li>
+          <a href={v.url}>{v.frontmatter.title}</a>
+          {v.frontmatter.date ? (
+            <span> &mdash; {showDate(v.frontmatter.date)}</span>
+          ) : null}
+        </li>
+      ))
+  }
+</ol>

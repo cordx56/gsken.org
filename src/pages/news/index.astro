@@ -4,9 +4,9 @@ import Archive from "@/components/Archive.astro";
 const posts = await Astro.glob("./*.md");
 ---
 
-<Layout pageTitle="ブログ">
+<Layout pageTitle="おしらせ">
   <article>
-    <h1>ブログ記事一覧</h1>
+    <h1>おしらせ一覧</h1>
     <Archive posts={posts} />
   </article>
 </Layout>

@@ -1,5 +1,25 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import Layout from "@/layouts/Layout.astro";
+import Archive from "@/components/Archive.astro";
+const news = await Astro.glob("./news/*.md");
+const posts = await Astro.glob("./posts/*.md");
 ---
 
-<Layout> Hello </Layout>
+<Layout>
+  <article>
+    <section>
+      <h1>ようこそ！</h1>
+      <p>学園生活研究部のホームページです</p>
+    </section>
+    <section>
+      <h2>おしらせ</h2>
+      <Archive posts={news} />
+      <p><a href="/news/">過去のお知らせ</a></p>
+    </section>
+    <section>
+      <h2>ブログ</h2>
+      <Archive posts={posts} />
+      <p><a href="/posts/">過去のブログ記事</a></p>
+    </section>
+  </article>
+</Layout>

@@ -1,0 +1,6 @@
+---
+import { icon } from "@fortawesome/fontawesome-svg-core";
+const { icon: faIcon } = Astro.props;
+---
+
+<Fragment set:html={icon(faIcon).html[0]} />

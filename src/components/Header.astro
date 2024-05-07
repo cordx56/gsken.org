@@ -1,16 +1,26 @@
 ---
 import { siteTitle } from "@/consts";
+
+import Icon from "@/components/Icon.astro";
+import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 ---
 
 <header class="mb-4">
   <div class="container relative flex justify-between items-center p-2">
     <h1 class="text-3xl"><a href="/">{siteTitle}</a></h1>
     <nav id="nav">
-      <div id="nav-toggle" class="flex sm:hidden items-center">menu</div>
+      <div id="nav-toggle" class="flex sm:hidden items-center">
+        <span class="open-icon">
+          <Icon icon={faBars} />
+        </span>
+        <span class="close-icon">
+          <Icon icon={faXmark} />
+        </span>
+      </div>
       <ul>
-        <li>告知</li>
-        <li>出版物</li>
-        <li>ブログ</li>
+        <li><a href="/news/">おしらせ</a></li>
+        <li><a href="/pubs/">出版物</a></li>
+        <li><a href="/posts/">ブログ</a></li>
       </ul>
     </nav>
   </div>
@@ -23,11 +33,23 @@ import { siteTitle } from "@/consts";
   });
 </script>
 <style>
+  #nav {
+    @apply text-xl;
+  }
   #nav ul {
-    @apply absolute right-0 top-full hidden bg items-center justify-end sm:justify-normal border-l border-b border-zinc-300 text-xl;
+    @apply absolute right-0 top-full hidden bg items-center justify-end sm:justify-normal border-l border-b border-zinc-300;
   }
   #nav.open ul {
     @apply flex flex-col;
+  }
+  #nav .close-icon {
+    @apply hidden;
+  }
+  #nav.open .close-icon {
+    @apply block;
+  }
+  #nav.open .open-icon {
+    @apply hidden;
   }
   @media screen(sm) {
     #nav ul,
