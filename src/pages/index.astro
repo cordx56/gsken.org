@@ -7,17 +7,19 @@ const posts = await Astro.glob("./posts/*.md");
 
 <Layout>
   <article>
+    <img src="/logo.svg" class="w-full md:w-4/5 block mx-auto" />
     <h1>学園生活研究部ホームページ</h1>
-    <p><a href="/about/">私たちについて</a></p>
+    <p>学園生活研究部は、ソフトウェアを中心とした技術系同人サークルです。</p>
+    <p><a href="/about">私たちについて</a></p>
     <section>
       <h2>おしらせ</h2>
       <Archive posts={news} max={5} />
-      <p><a href="/news/">過去のお知らせ</a></p>
+      <p><a href="/news">過去のお知らせ</a></p>
     </section>
     <section>
       <h2>ブログ</h2>
       <Archive posts={posts} max={5} />
-      <p><a href="/posts/">過去のブログ記事</a></p>
+      <p><a href="/posts">過去のブログ記事</a></p>
     </section>
   </article>
 </Layout>
