@@ -1,0 +1,23 @@
+---
+
+---
+
+<script>
+  document.documentElement.classList.add("js");
+  const currentHref = new URL(location.href);
+  const referrer = document.referrer;
+  if (
+    referrer.length === 0 ||
+    currentHref.host !== new URL(document.referrer).host
+  ) {
+    document.documentElement.classList.add("new-visit");
+  }
+  setTimeout(() => {
+    if (!document.documentElement.classList.contains("load")) {
+      document.documentElement.classList.add("longLoad");
+    }
+  }, 1000);
+  window.addEventListener("load", () => {
+    document.documentElement.classList.add("load");
+  });
+</script>

@@ -7,7 +7,7 @@ export default {
   plugins: [
     ({ addComponents }) =>
       addComponents({
-        ".bg": { "@apply bg-zinc-100 dark:bg-zinc-900": {} },
+        ".bg": { "@apply bg-white dark:bg-zinc-900": {} },
         ".fg": { "@apply text-zinc-900 dark:text-zinc-200": {} },
       }),
   ],

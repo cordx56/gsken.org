@@ -1,69 +1,27 @@
 ---
 import "@fortawesome/fontawesome-svg-core/styles.css";
-import { siteTitle } from "@/consts";
+import "@/base.css";
+import Preload from "@/components/Preload.astro";
+import Head from "@/components/Head.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 
-interface Props {
+type Props = {
   pageTitle?: string;
-}
+};
 
 const { pageTitle } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content="学園生活研究部のサイト" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    {
-      pageTitle ? (
-        <title>
-          {pageTitle} &mdash; {siteTitle}
-        </title>
-      ) : (
-        <title>{siteTitle}</title>
-      )
-    }
-  </head>
+  <Head pageTitle={pageTitle} />
   <body>
     <Header />
     <main class="container">
       <slot />
     </main>
     <Footer />
+    <Preload />
   </body>
 </html>
-
-<style is:global>
-  :root {
-    @apply fg bg;
-  }
-  .container {
-    @apply w-full max-w-screen-md mx-auto px-3;
-  }
-  main a {
-    @apply text-rose-500;
-  }
-  main section {
-    @apply my-6;
-  }
-  main h1 {
-    @apply my-2 text-3xl;
-  }
-  main h2 {
-    @apply my-2 text-2xl;
-  }
-  main h3 {
-    @apply my-2 text-xl;
-  }
-  main p {
-    @apply my-2;
-  }
-  main ul {
-    @apply list-disc pl-4;
-  }
-</style>

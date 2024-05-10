@@ -1,25 +1,69 @@
 ---
-import Layout from "@/layouts/Layout.astro";
+import Preload from "@/components/Preload.astro";
+import Head from "@/components/Head.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
 import Archive from "@/components/Archive.astro";
 const news = await Astro.glob("./news/*.md");
 const posts = await Astro.glob("./posts/*.md");
 ---
 
-<Layout>
-  <article>
-    <img src="/logo.svg" class="w-full md:w-4/5 block mx-auto" />
-    <h1>学園生活研究部ホームページ</h1>
-    <p>学園生活研究部は、ソフトウェアを中心とした技術系同人サークルです。</p>
-    <p><a href="/about">私たちについて</a></p>
-    <section>
-      <h2>おしらせ</h2>
-      <Archive posts={news} max={5} />
-      <p><a href="/news">過去のお知らせ</a></p>
-    </section>
-    <section>
-      <h2>ブログ</h2>
-      <Archive posts={posts} max={5} />
-      <p><a href="/posts">過去のブログ記事</a></p>
-    </section>
-  </article>
-</Layout>
+<!doctype html>
+<html lang="ja">
+  <Head />
+  <body>
+    <div class="top-contents">
+      <Header />
+    </div>
+    <div class="top-logo relative container">
+      <img src="/logo.svg" class="relative w-full md:w-4/5 block mx-auto" />
+    </div>
+    <div class="top-contents relative">
+      <main class="container">
+        <article>
+          <p>
+            学園生活研究部は、ソフトウェアを中心とした技術系同人サークルです。
+          </p>
+          <p><a href="/about">私たちについて</a></p>
+          <section>
+            <h2>おしらせ</h2>
+            <Archive posts={news} max={5} />
+            <p><a href="/news">過去のお知らせ</a></p>
+          </section>
+          <section>
+            <h2>ブログ</h2>
+            <Archive posts={posts} max={5} />
+            <p><a href="/posts">過去のブログ記事</a></p>
+          </section>
+        </article>
+      </main>
+      <Footer />
+    </div>
+    <Preload />
+    <style>
+      .js.new-visit .top-logo img {
+        top: -5em;
+        opacity: 0;
+      }
+      .js.load .top-logo img,
+      .js.longLoad .top-logo img {
+        top: 0;
+        opacity: 1;
+        transition:
+          top 1s ease-out,
+          opacity 1.5s ease-out;
+      }
+
+      .js.new-visit .top-contents {
+        opacity: 0;
+      }
+      .js.load .top-contents,
+      .js.longLoad .top-contents {
+        opacity: 1;
+        transition:
+          top 1s ease-out,
+          opacity 1.5s 1.5s ease-out;
+      }
+    </style>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  @apply fg bg;
+}
+.container {
+  @apply w-full max-w-screen-md mx-auto px-3;
+}
+main {
+  @apply my-4;
+}
+main a {
+  @apply text-rose-500;
+}
+main section {
+  @apply my-6;
+}
+main h1 {
+  @apply my-2 text-3xl;
+}
+main h2 {
+  @apply my-2 text-2xl;
+}
+main h3 {
+  @apply my-2 text-xl;
+}
+main p {
+  @apply my-2;
+}
+main ul {
+  @apply list-disc pl-4;
+}
