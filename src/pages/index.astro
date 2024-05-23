@@ -50,8 +50,8 @@ const posts = await Astro.glob("./posts/*.md");
         top: 0;
         opacity: 1;
         transition:
-          top 1s ease-out,
-          opacity 1.5s ease-out;
+          top 0.8s ease-out,
+          opacity 1.2s ease-out;
       }
 
       .js.new-visit .top-contents {
@@ -60,9 +60,7 @@ const posts = await Astro.glob("./posts/*.md");
       .js.load .top-contents,
       .js.longLoad .top-contents {
         opacity: 1;
-        transition:
-          top 1s ease-out,
-          opacity 1.5s 1.5s ease-out;
+        transition: opacity 1.2s 1.6s ease-out;
       }
     </style>
   </body>
