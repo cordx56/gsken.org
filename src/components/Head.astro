@@ -11,15 +11,18 @@ const { pageTitle }: Props = Astro.props;
   <meta charset="UTF-8" />
   <meta name="description" content="学園生活研究部のサイト" />
   <meta name="viewport" content="width=device-width" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" href="/icon.png" />
   <meta name="generator" content={Astro.generator} />
-  {
-    pageTitle ? (
-      <title>
-        {pageTitle} &mdash; {siteTitle}
-      </title>
-    ) : (
-      <title>{siteTitle}</title>
-    )
-  }
+  <title>
+    {pageTitle ? `${pageTitle} | ${siteTitle}` : siteTitle}
+  </title>
+
+  <meta name="twitter:card" content="summary" />
+  <meta
+    property="og:title"
+    content={pageTitle ? `${pageTitle} | ${siteTitle}` : siteTitle}
+  />
+  <meta property="og:url" content={Astro.url} />
+  <meta property="og:description" content="学園生活研究部のページです" />
+  <meta property="og:image" content={`${Astro.site}icon.png`} />
 </head>
